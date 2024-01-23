@@ -1,0 +1,17 @@
+services:
+  app:
+    image: vinay1122/mlapp:latest
+    ports:
+      - "5001:5001"
+    command: sh -c "sleep 20s ; python3 ./app.py"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: vinay1122/mlsql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD : root
+      MYSQL_DATABASE : apidata`
+    ports:
+      - '3306:3306'
